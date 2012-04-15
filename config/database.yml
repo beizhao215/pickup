@@ -43,7 +43,7 @@ test:
   encoding: unicode
   database: pickup_test
   pool: 5
-  username: pickup
+  username: beizhao
   password:
 
 production:

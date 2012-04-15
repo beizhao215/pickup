@@ -9,7 +9,7 @@ describe "Static pages" do
 
     it { should have_content('Welcome')}
     
-    it { should have_selector('title', :text => "FACSS airport pickup") }
+    it { should have_selector('title', :text => full_title('')) }
     
     it { should_not have_selector('title', :text => '| Home') }
   end
@@ -19,6 +19,16 @@ describe "Static pages" do
 
       it { should have_content('about me') }
       
-      it { should have_selector('title', :text => "FACSS airport pickup | About") }
+      it { should have_selector('title', :text => full_title('About')) }
   end
+  
+  it "should have the right links on the layout" do
+      visit root_path
+      click_link "About"
+      page.should have_selector 'title', text: full_title('About')
+      click_link "Home"
+      page.should have_selector('title', :text => full_title(''))
+      click_link "Sign up as Newbie!"
+      page.should have_selector('title', text: full_title('Sign up'))
+    end
 end
