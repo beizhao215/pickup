@@ -1,8 +1,6 @@
 Pickup::Application.routes.draw do
+  resources :newbies
  
-
-  get "newbies/new"
-
   root to: 'static_pages#home'
   match '/about',   to: 'static_pages#about'
   match '/signupnewbie', to: 'newbies#new'
