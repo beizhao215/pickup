@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120415175233) do
 
-  create_table "newbies", :force => true do |t|
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",      :null => false
@@ -21,6 +21,6 @@ ActiveRecord::Schema.define(:version => 20120415175233) do
     t.string   "password_digest"
   end
 
-  add_index "newbies", ["email"], :name => "index_newbies_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_newbies_on_email", :unique => true
 
 end
