@@ -2,18 +2,22 @@
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id              :integer         not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
+#  newbie          :boolean
 #
 
 require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+  before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar", newbie: false) }
 
   subject { @user }
 
@@ -26,6 +30,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:posts) }
+  it { should respond_to(:newbie) }
 
   
   it { should be_valid }
@@ -49,6 +54,11 @@ describe User do
   
   describe "when password is not present" do
     before { @user.password = @user.password_confirmation = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "when newbie is not filled" do
+    before { @user.newbie = nil }
     it { should_not be_valid }
   end
   

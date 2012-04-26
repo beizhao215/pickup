@@ -5,6 +5,9 @@
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages' %>
+	
+	  <%= f.radio_button :newbie, true %> <%= f.label :newbie, "I'm a new student need pick up" %>
+	  <%= f.radio_button :newbie, false%> <%= f.label :newbie, "I'm a volunteer willing to provide pick up" %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
