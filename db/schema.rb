@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425182820) do
+ActiveRecord::Schema.define(:version => 20120428183240) do
 
   create_table "posts", :force => true do |t|
     t.string   "note"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "number_of_people"
+    t.date     "arrival_date"
+    t.time     "arrival_time"
+    t.string   "flight_number"
+    t.string   "luggage_number"
+    t.string   "destination"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"

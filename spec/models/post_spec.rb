@@ -14,7 +14,13 @@ require 'spec_helper'
 describe Post do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @post = user.posts.build(note: "Lorem ipsum") }
+  before { @post = user.posts.build(note: "Lorem ipsum", 
+                                    number_of_people: "1", 
+                                    arrival_date: "6/1/2012", 
+                                    arrival_time: "21:08", 
+                                    flight_number:"AA2021", 
+                                    luggage_number: "two 158",
+                                    destination: "utd") }
 
   subject { @post }
 
@@ -22,6 +28,12 @@ describe Post do
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }
+  it { should respond_to(:number_of_people) }
+  it { should respond_to(:arrival_date) }
+  it { should respond_to(:arrival_time) }
+  it { should respond_to(:flight_number) }
+  it { should respond_to(:luggage_number) }
+  it { should respond_to(:destination) }
   
   it { should be_valid }
 
@@ -43,13 +55,19 @@ describe Post do
     it { should_not be_valid }
   end
 
-  describe "with blank note" do
-    before { @post.note = " " }
-    it { should_not be_valid }
-  end
-
   describe "with note that is too long" do
     before { @post.note = "a" * 141 }
     it { should_not be_valid }
   end
+  
+  describe "when number of people is not present" do
+    before { @post.number_of_people = nil }
+    it { should_not be_valid }
+  end
+  
+  describe "when number of people is not number" do
+    before { @post.number_of_people = "one" }
+    it { should_not be_valid }
+  end
+  
 end
