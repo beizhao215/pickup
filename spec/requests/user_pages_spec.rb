@@ -13,10 +13,24 @@ describe "User pages" do
   
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user)}
+    let!(:m1) { FactoryGirl.create(:post, 
+                                    user: user, 
+                                    note: "Lorem ipsum", 
+                                    number_of_people: "1", 
+                                    arrival_date: "2012-09-19", 
+                                    arrival_time: "21:08", 
+                                    flight_number:"AA2021", 
+                                    luggage_number: "two 158",
+                                    destination: "utd") }
+    before { visit user_path(user) }
 
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
+    
+    describe "posts" do
+      it { should have_content(m1.note) }
+      it { should have_content(user.posts.count) }
+    end
   end
   
   describe "signup" do

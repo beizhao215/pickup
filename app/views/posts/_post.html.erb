@@ -1,0 +1,14 @@
+<li>
+  <span class="content">
+	<li>Name: <%= post.user.name %></li>
+	<li>Arrival date: <%= post.arrival_date %></li> 
+	<li>Arrival time: <%= post.arrival_time.hour %>:<%= post.arrival_time.min %></li> 
+	<li>Flight number: <%= post.flight_number %></li>
+	<li>Number of people: <%= post.number_of_people %></li>
+	<li>Luggage: <%= post.luggage_number %></li>
+	<li>Notes: <%= post.note %></li>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+</li>

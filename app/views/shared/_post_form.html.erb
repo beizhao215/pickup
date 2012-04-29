@@ -1,0 +1,26 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+	<%= f.label :arrival_date, "Arrival date (YYYY-MM-DD)" %>
+    <%= f.text_field :arrival_date %>
+
+	<%= f.label :arrival_time, "Arrival time (hh:mm:ss)" %>
+    <%= f.text_field :arrival_time %>
+
+	<%= f.label :flight_number %>
+    <%= f.text_field :flight_number %>
+
+	<%= f.label :number_of_people %>
+	<%= f.text_field :number_of_people %>
+
+	<%= f.label :luggage_number %>
+    <%= f.text_field :luggage_number, placeholder: "How many luggage do you have?"  %>
+
+	<%= f.label :destination %>
+    <%= f.text_field :destination, placeholder: "Where's your temp housing?" %>
+	
+    <%= f.label :note, "Notes" %>
+	<%= f.text_area :note, placeholder: "Additional notes to volunteer..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

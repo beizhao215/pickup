@@ -16,7 +16,7 @@ describe Post do
   let(:user) { FactoryGirl.create(:user) }
   before { @post = user.posts.build(note: "Lorem ipsum", 
                                     number_of_people: "1", 
-                                    arrival_date: "6/1/2012", 
+                                    arrival_date: "2012-09-20", 
                                     arrival_time: "21:08", 
                                     flight_number:"AA2021", 
                                     luggage_number: "two 158",
