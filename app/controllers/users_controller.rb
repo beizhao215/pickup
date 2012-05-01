@@ -16,8 +16,8 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
         sign_in @user
-        flash[:success] = "Signup success!"
-        redirect_to @user
+        flash[:success] = "Signup success! Please complete your info~"
+        redirect_to edit_user_path(current_user)
       else
         render 'new'
       end
