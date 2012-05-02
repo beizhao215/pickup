@@ -31,6 +31,10 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:posts) }
   it { should respond_to(:newbie) }
+  it { should respond_to(:qq) }
+  it { should respond_to(:phone) }
+  it { should respond_to(:renren) }
+  
 
   
   it { should be_valid }
