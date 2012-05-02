@@ -6,5 +6,6 @@ class AddAttrToPosts < ActiveRecord::Migration
     add_column :posts, :flight_number, :string
     add_column :posts, :luggage_number, :string
     add_column :posts, :destination, :string
+    
   end
 end

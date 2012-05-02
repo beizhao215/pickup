@@ -12,6 +12,9 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+	  <%= f.radio_button :gender, true %> <%= f.label :gender, "I'm a boy" %>
+	  <%= f.radio_button :gender, false%> <%= f.label :gender, "I'm a girl" %>
+
  	  <%= f.label :qq, "QQ" %>
       <%= f.text_field :qq %>
 

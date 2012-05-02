@@ -14,7 +14,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :newbie, :qq, :phone, :renren
+  attr_accessible :email, :name, :password, :password_confirmation, :newbie, :qq, :phone, :renren, :gender
   has_secure_password
   has_many :posts, dependent: :destroy
   

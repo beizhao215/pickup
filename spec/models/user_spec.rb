@@ -34,6 +34,7 @@ describe User do
   it { should respond_to(:qq) }
   it { should respond_to(:phone) }
   it { should respond_to(:renren) }
+  it { should respond_to(:gender) }
   
 
   

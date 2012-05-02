@@ -15,7 +15,8 @@ namespace :db do
                    email: email,
                    password: password,
                    password_confirmation: password,
-                   newbie: true)
+                   newbie: true,
+                   gender: true)
     end
     
     20.times do |n|
@@ -26,7 +27,8 @@ namespace :db do
                    email: email,
                    password: password,
                    password_confirmation: password,
-                   newbie: false)
+                   newbie: false,
+                   gender: false)
     end
     
     users = User.all
