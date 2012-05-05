@@ -7,23 +7,35 @@
         <%= @user.name %>
       </h1>
     </section>
+	<section>
+      <h1>
+        <li>Email: <%= @user.email %></li>
+		<li>QQ: <%= @user.qq %></li>
+		<li>Phone#: <%= @user.phone %></li>
+		<li>Renren: <%= @user.renren %></li>
+      </h1>
+    </section>
   </aside>
+   
   
-  <div class="span4">
-    <li>Email: <%= @user.email %></li>
-	<li>QQ: <%= @user.qq %></li>
-	<li>Phone#: <%= @user.phone %></li>
-	<li>Renren: <%= @user.renren %></li>
-  </div>
-  
-  <div class="span8">
-    <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
+  <div class="pp">
+	<aside class="span8">
+	<% if @user.newbie? %>
+		<% if @user.posts.count!=0 %>
+      		<h3>My Posts (<%= @user.posts.count %>)</h3>
+      		<ol class="posts">
+        		<%= render @posts %>
+      		</ol>
+      		<%= will_paginate @posts %>
+		<% else %>
+		<section>
+			<%= render 'shared/post_form' %>
+        </section>
+	    <% end %>
+	<% else %>
+		<h1>Im volunteer</h1>
     <% end %>
+	</aside>
   </div>
 
 </div>
