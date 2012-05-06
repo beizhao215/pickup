@@ -1,6 +1,6 @@
 <li>
   <span class="content">
-	<li>Name: <%= post.user.name %></li>
+	<li>Name: <%= link_to post.user.name, post.user %></li>
 	<li>Arrival date: <%= post.arrival_date %></li> 
 	<li>Arrival time: <%= post.arrival_time.hour %>:<%= post.arrival_time.min %></li> 
 	<li>Flight number: <%= post.flight_number %></li>
