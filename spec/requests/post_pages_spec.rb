@@ -37,4 +37,16 @@ describe "Post pages" do
       end
     end
   end
+  
+  describe "post destruction" do
+    before { FactoryGirl.create(:post, user: user) }
+
+    describe "as correct user" do
+      before { visit user_path(user) }
+
+      it "should delete a post" do
+        expect { click_link "delete" }.should change(Post, :count).by(-1)
+      end
+    end
+  end
 end

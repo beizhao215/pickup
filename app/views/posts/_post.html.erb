@@ -7,6 +7,9 @@
 	<li>Number of people: <%= post.number_of_people %></li>
 	<li>Luggage: <%= post.luggage_number %></li>
 	<li>Notes: <%= post.note %></li>
+	<li><% if current_user?(post.user) %>
+		<%= link_to "delete", post, method: :delete, confirm: "You sure?", title: post.user.name%>
+	<% end %></li>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
