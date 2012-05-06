@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:success] = "Post deleted!"
     redirect_back_or user_path(current_user)
   end
   
