@@ -35,6 +35,11 @@ describe User do
   it { should respond_to(:phone) }
   it { should respond_to(:renren) }
   it { should respond_to(:gender) }
+  it { should respond_to(:trips) }
+  it { should respond_to(:pickedposts) }
+  it { should respond_to(:picking?) }
+  it { should respond_to(:pick!) }
+  it { should respond_to(:unpick!) }
   
 
   
@@ -161,4 +166,25 @@ describe User do
     end
   end
   
+  describe "picking" do
+    let(:post) { FactoryGirl.create(:post) }
+    before do
+      @user.save
+      @user.pick!(post)
+    end
+    it {should be_picking(post)}
+    its(:pickedposts) {should include(post)}
+    
+    describe "picked volunteer" do
+      subject { post }
+      its(:volunteers) {should include(@user)}
+    end
+    
+    describe "and unpicking" do
+      before { @user.unpick!(post) }
+      
+      it { should_not be_picking(post) }
+      its(:pickedposts) { should_not include(post) }
+    end
+  end
 end

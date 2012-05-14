@@ -1,0 +1,4 @@
+<%= form_for(current_user.trips.find_by_pickedpost_id(@post), html: { method: :delete }) do |f| %>
+  <div><%= f.hidden_field :pickedpost_id %></div>
+  <%= f.submit "Unpick", class: "btn btn-large" %>
+<% end %>

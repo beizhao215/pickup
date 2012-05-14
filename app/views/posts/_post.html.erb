@@ -10,7 +10,26 @@
 	<li><% if current_user?(post.user) %>
 		<%= link_to "delete", post, method: :delete, confirm: "You sure?", title: post.user.name%>
 	<% end %></li>
+	<li>
+		<% unless current_user?(post.user) %>
+  			<div id="pick_form">
+  			<% if current_user.picking?(post) %> 
+    			<%= form_for(current_user.trips.find_by_pickedpost_id(post), html: { method: :delete }) do |f| %>
+  					<div><%= f.hidden_field :pickedpost_id %></div>
+  						 <%= f.submit "Unpick", class: "btn btn-large" %>
+				<% end %>
+  			<% else %>
+    			<%= form_for(current_user.trips.build(pickedpost_id: post.id)) do |f| %>
+  					<div><%= f.hidden_field :pickedpost_id %></div>
+  						 <%= f.submit "Pick", class: "btn btn-large btn-primary" %>
+				<% end %>
+  			<% end %>
+  			</div>
+		<% end %>
+	</li>
+	
   </span>
+  
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
   </span>

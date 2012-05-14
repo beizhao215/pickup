@@ -33,9 +33,15 @@
         </section>
 	    <% end %>
 	<% else %>
+		<% if @user.trips.count!=0 %>
+			<h3>My Pickups (<%= @user.trips.count %>)</h3>
+			
+      		
+		<% else %>
 		<h1>
 			<%= link_to "See all the posts", posts_path %>
 		</h1>
+		<% end %>
     <% end %>
 	</aside>
   </div>

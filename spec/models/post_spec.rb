@@ -35,6 +35,7 @@ describe Post do
   it { should respond_to(:luggage_number) }
   it { should respond_to(:destination) }
   it { should respond_to(:status) }
+  it { should respond_to(:volunteers) }
   
   it { should be_valid }
 

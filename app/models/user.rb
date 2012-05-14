@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :newbie, :qq, :phone, :renren, :gender
   has_secure_password
   has_many :posts, dependent: :destroy
+  has_many :trips, foreign_key: "volunteer_id", dependent: :destroy
+  has_many :pickedposts, through: :trips, source: :pickedpost
   
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -27,6 +29,18 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   validates_inclusion_of :newbie, :in => [true, false]
+  
+  def picking?(post)
+    trips.find_by_pickedpost_id(post.id)
+  end
+  
+  def pick!(post)
+    trips.create!(pickedpost_id: post.id)
+  end
+  
+  def unpick!(post)
+    trips.find_by_pickedpost_id(post.id).destroy
+  end
   
   private
 
