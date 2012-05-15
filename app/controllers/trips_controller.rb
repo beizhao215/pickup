@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
   before_filter :signed_in_user
   
+ 
+  
   def create
     @post = Post.find(params[:trip][:pickedpost_id])
     current_user.pick!(@post)

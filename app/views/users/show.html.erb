@@ -7,14 +7,22 @@
         <%= @user.name %>
       </h1>
     </section>
+	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) %>
 	<section>
       <h1>
         <li>Email: <%= @user.email %></li>
+		<li>Gender: 
+			<% if @user.gender? %>
+			Boy
+			<% else %>
+			Girl
+			<% end %>
 		<li>QQ: <%= @user.qq %></li>
 		<li>Phone#: <%= @user.phone %></li>
 		<li>Renren: <%= @user.renren %></li>
       </h1>
     </section>
+	<% end %>
   </aside>
    
   
@@ -35,7 +43,9 @@
 	<% else %>
 		<% if @user.trips.count!=0 %>
 			<h3>My Pickups (<%= @user.trips.count %>)</h3>
-			
+				<ol class="posts">
+        			<%= render @trips %>
+      			</ol>
       		
 		<% else %>
 		<h1>
