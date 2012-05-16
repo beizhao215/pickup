@@ -26,9 +26,15 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum:50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive:false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validate :validate_password
   validates_inclusion_of :newbie, :in => [true, false]
+  
+  def validate_password
+    if new_record? 
+      password.length >= 6
+      password_confirmation==password
+    end
+  end
   
   def picking?(post)
     trips.find_by_pickedpost_id(post.id)

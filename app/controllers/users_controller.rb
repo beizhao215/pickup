@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
   
   def update
+   
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user
@@ -58,4 +59,10 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+    
+    def skip_password_attribute
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.except!(:password, :password_confirmation)
+    end
+  end
 end
