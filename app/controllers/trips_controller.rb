@@ -13,7 +13,7 @@ class TripsController < ApplicationController
   def destroy
     @post = Trip.find(params[:id]).pickedpost
     current_user.unpick!(@post)
-    @post.status = false
+    @post.toggle!(:status)
     redirect_to user_path(current_user)
   end
 end

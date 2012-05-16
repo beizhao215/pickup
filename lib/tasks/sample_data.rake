@@ -57,8 +57,9 @@ end
     n=0
     volunteers.each do |volunteer| 
       volunteer.pick!(posts[n])
-      n=n+1
+     
       posts[n].toggle!(:status)
+       n=n+1
     end
   end
   

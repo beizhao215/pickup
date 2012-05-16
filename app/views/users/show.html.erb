@@ -7,7 +7,7 @@
         <%= @user.name %>
       </h1>
     </section>
-	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) || current_user.admin? %>
+	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) || current_user.admin? || @user.trips.map(&:pickedpost).map(&:user).include?(current_user) %>
 	<section>
       <h1>
         <li>Email: <%= @user.email %></li>
