@@ -5,16 +5,18 @@ Flight number: <%= trip.pickedpost.flight_number %>
 Number of people: <%= trip.pickedpost.number_of_people %>
 Luggage: <%= trip.pickedpost.luggage_number %>
 Notes: <%= trip.pickedpost.note %>
-<div id="pick_form">
-  <% if current_user.picking?(trip.pickedpost) %> 
-    <%= form_for(current_user.trips.find_by_pickedpost_id(trip.pickedpost), html: { method: :delete }) do |f| %>
-  	  <div><%= f.hidden_field :pickedpost_id %></div>
-  		   <%= f.submit "Unpick", class: "btn btn-large" %>
-	<% end %>
-  <% else %>
-    <%= form_for(current_user.trips.build(pickedpost_id: trip.pickedpost.id)) do |f| %>
-   	  <div><%= f.hidden_field :pickedpost_id %></div>
-   		   <%= f.submit "Pick", class: "btn btn-large btn-primary" %>
-	<% end %>
-  <% end %>
-</div>
+<% if !trip.pickedpost.status? && !current_user.newbie? && !current_user?(trip.pickedpost.user) %>
+	<div id="pick_form">
+  		<% if current_user.picking?(trip.pickedpost) %> 
+    		<%= form_for(current_user.trips.find_by_pickedpost_id(trip.pickedpost), html: { method: :delete }) do |f| %>
+  	   			<div><%= f.hidden_field :pickedpost_id %></div>
+  		   			 <%= f.submit "Unpick", class: "btn btn-large" %>
+			<% end %>
+  	 	<% else %>
+    		<%= form_for(current_user.trips.build(pickedpost_id: trip.pickedpost.id)) do |f| %>
+   	  			<div><%= f.hidden_field :pickedpost_id %></div>
+   		   			 <%= f.submit "Pick", class: "btn btn-large btn-primary" %>
+			<% end %>
+  		<% end %>
+	</div>
+<% end %>
