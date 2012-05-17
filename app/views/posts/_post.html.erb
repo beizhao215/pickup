@@ -11,8 +11,8 @@
 		<%= link_to "delete", post, method: :delete, confirm: "You sure?", title: post.user.name%>
 	<% end %></li>
 	<li>
-		<% unless current_user?(post.user) || current_user.newbie? %>
-			<% unless post.status? %>
+		
+			<% if !post.status? && !current_user.newbie? && !current_user?(post.user) %>
   				<div id="pick_form">
   				<% if current_user.picking?(post) %> 
     				<%= form_for(current_user.trips.find_by_pickedpost_id(post), html: { method: :delete }) do |f| %>
@@ -26,10 +26,10 @@
 					<% end %>
   				<% end %>
   				</div>
-			<% else %>			
+			<% elsif post.status? %>			
 				Pickup by: <%= link_to Trip.find_by_pickedpost_id(post).volunteer.name, Trip.find_by_pickedpost_id(post).volunteer %>
 			<% end %>
-		<% end %>
+		
 	</li>
 	
   </span>
