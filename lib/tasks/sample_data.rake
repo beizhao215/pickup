@@ -12,7 +12,10 @@ end
                  email: "admin@gmail.com",
                  password: "foobar",
                  password_confirmation: "foobar",
-                 newbie: false)
+                 newbie: false,
+                 provide_housing: false,
+                 gender: true,
+                 major: EE)
     admin.toggle!(:admin)
     20.times do |n|
       name  = Faker::Name.name
@@ -23,7 +26,9 @@ end
                    password: password,
                    password_confirmation: password,
                    newbie: true,
-                   gender: true)
+                   gender: true,
+                   major: MSA
+                   )
     end
     
     10.times do |n|
@@ -35,7 +40,10 @@ end
                    password: password,
                    password_confirmation: password,
                    newbie: false,
-                   gender: false)
+                   gender: false,
+                   provide_housing: true,
+                   housing_number: 1,
+                   major: EE)
     end
   end
   
@@ -47,7 +55,9 @@ end
     arrival_date = Random.date
     arrival_time = "23:58"
     flight_number = "AA1234"
-    newbies.each { |newbie| newbie.posts.create!(note: note, number_of_people: number_of_people, arrival_date: arrival_date, arrival_time: arrival_time, flight_number: flight_number)}
+    newbies.each { |newbie| newbie.posts.create!(note: note, number_of_people: number_of_people, arrival_date: arrival_date, 
+                                                 arrival_time: arrival_time, flight_number: flight_number, need_pickup: true, 
+                                                 need_housing:true)}
   end
   
   

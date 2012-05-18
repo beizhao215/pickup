@@ -51,10 +51,12 @@
         		<%= render @posts %>
       		</ol>
       		<%= will_paginate @posts %>
-		<% else %>
+		<% elsif @user.posts.count==0 && @user==current_user %>
 		<section>
 			<%= render 'shared/post_form' %>
         </section>
+		<% else %>
+			This new student has no post yet
 	    <% end %>
 	<% else %>
 		<% if @user.trips.count!=0 %>
@@ -63,10 +65,12 @@
         			<%= render @trips %>
       			</ol>
       		
-		<% else %>
+		<% elsif @user.posts.count==0 && @user==current_user %>
 		<h1>
 			<%= link_to "See all the posts", posts_path %>
 		</h1>
+		<% else %>
+			This volunteer has not picked any new students yet
 		<% end %>
     <% end %>
 	</aside>
