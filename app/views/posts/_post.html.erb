@@ -5,6 +5,18 @@
 	<li>Arrival time: <%= post.arrival_time.hour %>:<%= post.arrival_time.min %></li> 
 	<li>Flight number: <%= post.flight_number %></li>
 	<li>Number of people: <%= post.number_of_people %></li>
+	<li>Need airport pickup: 
+		<% if post.need_pickup? %>
+		Yes
+		<% else %>
+		No
+		<% end %>
+	<li>Need temp housing: 
+		<% if post.need_housing? %>
+		Yes
+		<% else %>
+		No
+		<% end %>
 	<li>Luggage: <%= post.luggage_number %></li>
 	<li>Notes: <%= post.note %></li>
 	<li><% if current_user?(post.user) || current_user.admin? %>

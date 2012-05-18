@@ -40,6 +40,12 @@ describe User do
   it { should respond_to(:picking?) }
   it { should respond_to(:pick!) }
   it { should respond_to(:unpick!) }
+  it { should respond_to(:provide_housing) }
+  it { should respond_to(:housing_number) }
+  it { should respond_to(:available_pickup_time) }
+  it { should respond_to(:major) }
+  
+  
   
 
   

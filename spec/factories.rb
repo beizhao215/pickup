@@ -19,6 +19,8 @@ FactoryGirl.define do
     flight_number "AA2021"
     luggage_number "two 158"
     destination "utd"
+    need_pickup true
+    need_housing true
     user
   end
 end

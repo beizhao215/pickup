@@ -20,7 +20,9 @@ describe Post do
                                     arrival_time: "21:08", 
                                     flight_number:"AA2021", 
                                     luggage_number: "two 158",
-                                    destination: "utd") }
+                                    destination: "utd",
+                                    need_pickup: true,
+                                    need_housing: true) }
 
   subject { @post }
 
@@ -36,6 +38,9 @@ describe Post do
   it { should respond_to(:destination) }
   it { should respond_to(:status) }
   it { should respond_to(:volunteers) }
+  it { should respond_to(:entry_port) }
+  it { should respond_to(:need_housing) }
+  it { should respond_to(:need_pickup) }
   
   it { should be_valid }
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509133737) do
+ActiveRecord::Schema.define(:version => 20120518135013) do
 
   create_table "posts", :force => true do |t|
     t.string   "note"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20120509133737) do
     t.string   "luggage_number"
     t.string   "destination"
     t.boolean  "status",           :default => false
+    t.boolean  "need_housing"
+    t.string   "entry_port"
+    t.boolean  "need_pickup"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"
@@ -43,16 +46,20 @@ ActiveRecord::Schema.define(:version => 20120509133737) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",                 :default => false
     t.boolean  "newbie"
     t.string   "qq"
     t.string   "phone"
     t.string   "renren"
     t.boolean  "gender"
+    t.boolean  "provide_housing"
+    t.integer  "housing_number"
+    t.string   "available_pickup_time"
+    t.string   "major"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

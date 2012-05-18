@@ -13,6 +13,17 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+ 	  <%= f.label :major %>
+      <%= f.text_field :major %>
+
+	  <% if !@user.newbie? %>
+	  	<%= f.radio_button :provide_housing, true %> <%= f.label :provide_housing, "I can provide temp housing" %>
+	  	<%= f.radio_button :provide_housing, false%> <%= f.label :provide_housing, "I CANNOT provide temp housing" %>
+	
+	  	<%= f.label :housing_number, "If yes, you can provide temp housing for how many people?" %>
+      	<%= f.text_field :housing_number %>
+	  <% end %>
+
 	  <%= f.radio_button :gender, true %> <%= f.label :gender, "I'm a boy" %>
 	  <%= f.radio_button :gender, false%> <%= f.label :gender, "I'm a girl" %>
 
@@ -24,7 +35,11 @@
 
  	  <%= f.label :renren, "Renren(xiaonei)" %>
       <%= f.text_field :renren %>
-
+	
+	  <% if !@user.newbie? %>
+ 	    <%= f.label :available_pickup_time, "Available pickup time(in case we are REALLY short of volunteers)" %>
+        <%= f.text_field :available_pickup_time %>
+	  <% end %>
       
 
       <%= f.submit "Update!", class: "btn btn-large btn-primary" %>

@@ -13,13 +13,29 @@
         <li>Email: <%= @user.email %></li>
 		<li>Gender: 
 			<% if @user.gender? %>
-			Boy
+				Boy
 			<% else %>
-			Girl
+				Girl
 			<% end %>
+		<li>I'm a 
+			<% if @user.newbie? %>
+				New student
+			<% else %>
+				Volunteer
+			<% end %>
+		<li>Major: <%= @user.major %></li>
 		<li>QQ: <%= @user.qq %></li>
 		<li>Phone#: <%= @user.phone %></li>
 		<li>Renren: <%= @user.renren %></li>
+		<% if !@user.newbie? %>
+			<li>Can provide temp housing: 
+				<% if @user.provide_housing? %>
+					Yes
+					<li>Can provide temp housing for <%= @user.housing_number %> person(s)</li>
+				<% else %>
+					No
+				<% end %>
+		<% end %>
       </h1>
     </section>
 	<% end %>

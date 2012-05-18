@@ -14,7 +14,8 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :newbie, :qq, :phone, :renren, :gender
+  attr_accessible :email, :name, :password, :password_confirmation, :newbie, :qq, :phone, :renren, :gender, 
+                  :provide_housing, :housing_number, :available_pickup_time, :major
   has_secure_password
   has_many :posts, dependent: :destroy
   has_many :trips, foreign_key: "volunteer_id", dependent: :destroy

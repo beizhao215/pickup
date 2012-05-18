@@ -31,6 +31,8 @@ describe "Post pages" do
                fill_in 'post_luggage_number', with: "two 158"
                fill_in 'post_destination', with: "utd"
                fill_in 'post_note', with: "Lorem ipsum" 
+               choose("post_need_pickup_true")
+               choose("post_need_housing_true")
             }
       it "should create a post" do
         expect { click_button "Post" }.should change(Post, :count).by(1)

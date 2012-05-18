@@ -12,6 +12,17 @@
 
 	<%= f.label :number_of_people %>
 	<%= f.text_field :number_of_people %>
+	
+	<%= f.label :entry_port, "Port of entry" %>
+	<%= f.text_field :entry_port %>
+	
+	Do you need Airport pickup?
+	<%= f.radio_button :need_pickup, true %> <%= f.label :need_pickup, "Yes" %>
+	<%= f.radio_button :need_pickup, false%> <%= f.label :need_pickup, "No" %>
+	
+	Do you need temp housing?
+	<%= f.radio_button :need_housing, true %> <%= f.label :need_housing, "Yes" %>
+  	<%= f.radio_button :need_housing, false%> <%= f.label :need_housing, "No" %>
 
 	<%= f.label :luggage_number %>
     <%= f.text_field :luggage_number, placeholder: "How many luggage do you have?"  %>
