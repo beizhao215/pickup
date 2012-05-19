@@ -47,7 +47,10 @@
 	</li>
 	
   </span>
-  
+  <% if current_user.admin? %>
+  	<li><%= link_to "Update post", edit_post_path(post) %></li>
+  <% end %>
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
   </span>

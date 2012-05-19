@@ -1,0 +1,12 @@
+<% provide(:title, "Edit post") %> 
+<h1>Update the post</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  <%= form_for(@post) do |f| %>
+     
+	  <%= f.label :temp_housing_arrangement %>
+      <%= f.text_field :temp_housing_arrangement %>
+
+	  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+  <% end %>
