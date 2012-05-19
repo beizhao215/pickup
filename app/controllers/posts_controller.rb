@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :create, :edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:index, :create, :destroy]
   
   before_filter :do_authentication,  only: :destroy
+  
+  before_filter :admin_user,   only: [:edit, :update]
   
 
  
@@ -17,9 +19,9 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-    if current_user.admin? && @post.update_attributes(params[:post][:temp_housing_arrangement])
-      flash[:success] = "Post updated"
-      redirect_to posts_path
+    if @post.update_attributes(params[:post])
+       flash[:success] = "Post updated"
+       redirect_to posts_path
     else
       redirect_to root_path
     end
@@ -50,6 +52,10 @@ class PostsController < ApplicationController
          @post = current_user.posts.find_by_id(params[:id])
          redirect_to user_path(current_user) if @post.nil?
       end
+    end
+    
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
 
 end

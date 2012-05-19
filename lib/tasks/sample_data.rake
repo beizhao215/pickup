@@ -15,7 +15,7 @@ end
                  newbie: false,
                  provide_housing: false,
                  gender: true,
-                 major: EE)
+                 major: "EE")
     admin.toggle!(:admin)
     20.times do |n|
       name  = Faker::Name.name
@@ -27,7 +27,7 @@ end
                    password_confirmation: password,
                    newbie: true,
                    gender: true,
-                   major: MSA
+                   major: "MSA"
                    )
     end
     
@@ -43,7 +43,7 @@ end
                    gender: false,
                    provide_housing: true,
                    housing_number: 1,
-                   major: EE)
+                   major: "EE")
     end
   end
   
