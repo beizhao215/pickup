@@ -11,7 +11,7 @@
 
 class Post < ActiveRecord::Base
   attr_accessible :note, :number_of_people, :arrival_date, :arrival_time, :flight_number, :luggage_number, :destination, :entry_port,
-                  :need_housing, :need_pickup
+                  :need_housing, :need_pickup, :temp_housing_arrangement
   belongs_to :user
   has_many :reverse_trips, foreign_key: "pickedpost_id", class_name: "Trip", dependent: :destroy
   has_many :volunteers, through: :reverse_trips, source: :volunteer 

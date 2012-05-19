@@ -41,6 +41,7 @@ describe Post do
   it { should respond_to(:entry_port) }
   it { should respond_to(:need_housing) }
   it { should respond_to(:need_pickup) }
+  it { should respond_to(:temp_housing_arrangement) }
   
   it { should be_valid }
 
