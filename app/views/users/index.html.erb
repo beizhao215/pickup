@@ -1,10 +1,80 @@
 <%= provide(:title, 'All users') %>
-<h1>All users</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
+<div class="container-fluid">
+	<header class="jumbotron subhead">
+		<div class="breadcrumb">
+			<div class="row-fluid btn-toolbar">
+				<div class="span2">
+					<strong>All <%= @users.count %> users</strong>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div class="row-fluid">
+		<div class="span16">
+			<table class="table-striped table-bordered table items-list">
+				<tread>
+					<tr>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=id" style>Id</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=name" style>Name</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=user.gender" style>Gender</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=user.major" style>Major</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=newbie" style>Role</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=renren" style>Renren</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=provide_housing" style>Provide temp housing?</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=housing_number" style>To how many people?</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=available_pickup_time" style>Available pickup time</a>
+						</th>
+						<% if current_user.admin? %>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=email" style>Email</a>
+						</th>
+						
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=qq" style>QQ</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/users?order=phone" style>Phone</a>
+						</th>
+						<% end%>
+						
+						
+					</tr>
+				</tread>
+				<tbody class="autopagerize_page_element">
+				
+  					<%= render @users %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,33 @@
-<li>
-  <%= gravatar_for user %>
-  <%= link_to user.name, user %>
+<tr data-item-id="<%= user.id %>">
+  <td class="column fixnum"><%= user.id %></td>
+  <td class="column fixnum"><%= link_to user.name, user %></td>
+  <td class="column string">
+		<% if user.gender? %>
+				Boy
+			<% else %>
+				Girl
+			<% end %></td>
+  <td class="column string"><%= user.major %></td>
+  <td class="column string">
+		<% if user.newbie? %>
+				New student
+			<% else %>
+				Volunteer
+			<% end %></td>
+  <td class="column string"><%= user.renren %></td>		
+  <td class="column string">
+		<% if user.provide_housing? %>
+				Yes
+			<% else %>
+				No
+			<% end %></td>	
+  <td class="column fixnum"><%= user.housing_number %></td>	
+  <td class="column string"><%= user.available_pickup_time %></td>
+  <% if current_user.admin? %>
+  <td class="column string"><%= user.email %></td>
+  <td class="column string"><%= user.qq %></td>
+  <td class="column string"><%= user.phone %></td>
+  <% end %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
   <% end %>

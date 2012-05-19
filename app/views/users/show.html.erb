@@ -7,23 +7,27 @@
         <%= @user.name %>
       </h1>
     </section>
-	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) || current_user.admin? || @user.trips.map(&:pickedpost).map(&:user).include?(current_user) %>
 	<section>
-      <h1>
-        <li>Email: <%= @user.email %></li>
-		<li>Gender: 
-			<% if @user.gender? %>
-				Boy
-			<% else %>
-				Girl
-			<% end %>
+      <strong>
 		<li>I'm a 
 			<% if @user.newbie? %>
 				New student
 			<% else %>
 				Volunteer
 			<% end %>
+		<li>Gender: 
+			<% if @user.gender? %>
+				Boy
+			<% else %>
+				Girl
+			<% end %>
 		<li>Major: <%= @user.major %></li>
+	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) || current_user.admin? || @user.trips.map(&:pickedpost).map(&:user).include?(current_user) %>
+	
+        <li>Email: <%= @user.email %></li>
+		
+		
+		
 		<li>QQ: <%= @user.qq %></li>
 		<li>Phone#: <%= @user.phone %></li>
 		<li>Renren: <%= @user.renren %></li>
@@ -36,7 +40,8 @@
 					No
 				<% end %>
 		<% end %>
-      </h1>
+		<li>Available pickup time: <%= @user.available_pickup_time %></li>
+     </strong>
     </section>
 	<% end %>
   </aside>
