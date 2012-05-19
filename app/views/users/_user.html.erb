@@ -28,7 +28,9 @@
   <td class="column string"><%= user.qq %></td>
   <td class="column string"><%= user.phone %></td>
   <% end %>
+  <td>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+    <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
   <% end %>
-</li>
+  </td>
+</tr>
