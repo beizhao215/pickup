@@ -47,9 +47,17 @@ test:
   password:
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: pickup_production
-  pool: 5
-  username: pickup
-  password:
+  adapter:	postgresql
+  encoding:	unicode
+  pool:	5
+  database:	resource48655
+  username:	vykdpzdajeiygf
+  password:	pD51h9CHjDh9W4txvMjY4gYxHa
+  host:	ec2-23-23-234-207.compute-1.amazonaws.com
+  port:	5432
+  #adapter: postgresql
+  #encoding: unicode
+  #database: pickup_production
+  #pool: 5
+  #username: pickup
+  #password:

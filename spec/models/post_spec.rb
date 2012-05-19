@@ -20,7 +20,7 @@ describe Post do
                                     arrival_time: "21:08", 
                                     flight_number:"AA2021", 
                                     luggage_number: "two 158",
-                                    destination: "utd",
+                                    #destination: "utd",
                                     need_pickup: true,
                                     need_housing: true) }
 
@@ -35,7 +35,7 @@ describe Post do
   it { should respond_to(:arrival_time) }
   it { should respond_to(:flight_number) }
   it { should respond_to(:luggage_number) }
-  it { should respond_to(:destination) }
+  #it { should respond_to(:destination) }
   it { should respond_to(:status) }
   it { should respond_to(:volunteers) }
   it { should respond_to(:entry_port) }

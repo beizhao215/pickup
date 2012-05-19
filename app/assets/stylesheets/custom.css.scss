@@ -81,6 +81,11 @@ p {
   }
 }
 
+.navbar-inner{
+  background-color: #D44413;
+}
+
+
 /* footer */
 
 footer {
@@ -211,4 +216,10 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+/* post index */
+
+.jumbotron.subhead {
+  margin-left: 0px;
 }

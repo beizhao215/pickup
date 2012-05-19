@@ -29,7 +29,7 @@ describe "Post pages" do
                fill_in 'post_flight_number', with: "AA2021"
                fill_in 'post_number_of_people', with: "1"
                fill_in 'post_luggage_number', with: "two 158"
-               fill_in 'post_destination', with: "utd"
+               #fill_in 'post_destination', with: "utd"
                fill_in 'post_note', with: "Lorem ipsum" 
                choose("post_need_pickup_true")
                choose("post_need_housing_true")

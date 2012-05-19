@@ -51,7 +51,7 @@ end
   def make_posts  
     newbies = User.find_all_by_newbie(true)
     note = Faker::Lorem.sentence(5)
-    number_of_people = 1+rand(3)
+    number_of_people = 1+rand(1)
     arrival_date = Random.date
     arrival_time = "23:58"
     flight_number = "AA1234"

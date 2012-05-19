@@ -10,7 +10,7 @@
 	<%= f.label :flight_number %>
     <%= f.text_field :flight_number %>
 
-	<%= f.label :number_of_people %>
+	<%= f.label :number_of_people, "Number of people (max number 2 for one post)" %>
 	<%= f.text_field :number_of_people %>
 	
 	<%= f.label :entry_port, "Port of entry" %>
@@ -27,9 +27,6 @@
 	<%= f.label :luggage_number %>
     <%= f.text_field :luggage_number, placeholder: "How many luggage do you have?"  %>
 
-	<%= f.label :destination %>
-    <%= f.text_field :destination, placeholder: "Where's your temp housing?" %>
-	
     <%= f.label :note, "Notes" %>
 	<%= f.text_area :note, placeholder: "Additional notes to volunteer..." %>
   </div>

@@ -1,6 +1,7 @@
 <li>
   <span class="content">
 	<li>Name: <%= link_to post.user.name, post.user %></li>
+	<li>Major: <%= post.user.major %></li>
 	<li>Arrival date: <%= post.arrival_date %></li> 
 	<li>Arrival time: <%= post.arrival_time.hour %>:<%= post.arrival_time.min %></li> 
 	<li>Flight number: <%= post.flight_number %></li>
@@ -47,14 +48,15 @@
 	</li>
 	
   </span>
-  <% if current_user.admin? %>
-  	<li><%= link_to "Update post", edit_post_path(post) %></li>
-  <% end %>
-
+ 
   <% if post.need_housing? %>
 	<li>Temp housing: <% post.temp_housing_arrangement %></li>
   <% else %>
 	<li>No need</li>
+  <% end %>
+
+  <% if current_user.admin? %>
+  	<li><%= link_to "Update temp housing arrangement", edit_post_path(post) %></li>
   <% end %>
 
   <span class="timestamp">

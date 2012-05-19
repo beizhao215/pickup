@@ -1,6 +1,79 @@
 <%= provide(:title, 'All posts') %>
-<h1>All <%= @posts.count %> posts</h1>
+<div class="container-fluid">
+	<header class="jumbotron subhead">
+		<div class="breadcrumb">
+			<div class="row-fluid btn-toolbar">
+				<div class="span2">
+					<strong>All <%= @posts.count %> posts</strong>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div class="row-fluid">
+		<div class="span12">
+			<table class="table-striped table-bordered table items-list">
+				<tread>
+					<tr>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=id" style>Id</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=name" style>Name</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=user.major" style>Major</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=arrival_date" style>Arrival date</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=arrival_time" style>Arrival time</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=flight_number" style>Flight number</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=number_of_prople" style>Number of people</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=need_pickup" style>Need airport pickup?</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=need_housing" style>Need temp housing?</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=note" style>Notes</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=status" style>Pickup status</a>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<a href="/posts?order=temp_housing" style>Temp housing status</a>
+						</th>
+					</tr>
+				</tread>
+				
+			</table>
+		</div>
+	</div>
+					
+			
+
 
 <ul class="posts">
   <%= render @posts %>
 </ul>
+</div>
