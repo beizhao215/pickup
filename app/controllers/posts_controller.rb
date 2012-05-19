@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :create, :destroy]
+  before_filter :signed_in_user, only: [:index, :create, :edit, :update, :destroy]
   
   before_filter :do_authentication,  only: :destroy
   
@@ -9,6 +9,20 @@ class PostsController < ApplicationController
   def index
    
     @posts = Post.all
+  end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    if current_user.admin? && @post.update_attributes(params[:post][:temp_housing_arrangement])
+      flash[:success] = "Post updated"
+      redirect_to posts_path
+    else
+      redirect_to root_path
+    end
   end
   
   def create
