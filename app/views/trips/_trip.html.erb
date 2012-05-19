@@ -1,11 +1,17 @@
-Name: <%= link_to trip.pickedpost.user.name, trip.pickedpost.user %>
-Arrival date: <%= trip.pickedpost.arrival_date %>
-Arrival time: <%= trip.pickedpost.arrival_time.hour %>:<%= trip.pickedpost.arrival_time.min %>
-Flight number: <%= trip.pickedpost.flight_number %>
-Number of people: <%= trip.pickedpost.number_of_people %>
-Luggage: <%= trip.pickedpost.luggage_number %>
-Notes: <%= trip.pickedpost.note %>
-<% if !trip.pickedpost.status? && !current_user.newbie? && !current_user?(trip.pickedpost.user) %>
+<li>Name: <%= link_to trip.pickedpost.user.name, trip.pickedpost.user %></li>
+<li>Gender:
+		<% if trip.pickedpost.user.gender? %>
+				Boy
+			<% else %>
+				Girl
+			<% end %></li>
+<li>Major:<%= trip.pickedpost.user.major %></li>
+<li>Arrival date: <%= trip.pickedpost.arrival_date %></li>
+<li>Arrival time: <%= trip.pickedpost.arrival_time.hour %>:<%= trip.pickedpost.arrival_time.min %></li>
+<li>Flight number: <%= trip.pickedpost.flight_number %></li>
+<li>Number of people: <%= trip.pickedpost.number_of_people %></li>
+<li>Notes: <%= trip.pickedpost.note %></li>
+<li><% if !trip.pickedpost.status? && !current_user.newbie? && !current_user?(trip.pickedpost.user) %>
 	<div id="pick_form">
   		<% if current_user.picking?(trip.pickedpost) %> 
     		<%= form_for(current_user.trips.find_by_pickedpost_id(trip.pickedpost), html: { method: :delete }) do |f| %>
@@ -20,3 +26,4 @@ Notes: <%= trip.pickedpost.note %>
   		<% end %>
 	</div>
 <% end %>
+</li>

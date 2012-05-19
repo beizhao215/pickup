@@ -1,32 +1,30 @@
-<tr data-item-id="<%= post.id %>">
-	<td class="column fixnum"><%= post.id %></td>
-	<td class="column foreignkey"><%= link_to post.user.name, post.user %></td>
-	<td class="column string">
-		<% if post.user.gender? %>
-				Boy
-			<% else %>
-				Girl
-			<% end %></td>
-	<td class="column string"><%= post.user.major %></td>
-	<td class="column date"><%= post.arrival_date %></td> 
-	<td class="column time"><%= post.arrival_time.hour %>:<%= post.arrival_time.min %></td> 
-	<td class="column string"><%= post.flight_number %></td>
-	<td class="column fixnum"><%= post.number_of_people %></td>
-	<td class="column string">
+<li>
+  <span class="content">
+	<li>Name: <%= link_to post.user.name, post.user %></li>
+	<li>Major: <%= post.user.major %></li>
+	<li>Arrival date: <%= post.arrival_date %></li> 
+	<li>Arrival time: <%= post.arrival_time.hour %>:<%= post.arrival_time.min %></li> 
+	<li>Flight number: <%= post.flight_number %></li>
+	<li>Number of people: <%= post.number_of_people %></li>
+	<li>Need airport pickup: 
 		<% if post.need_pickup? %>
 		Yes
 		<% else %>
 		No
-		<% end %></td>
-	<td class="column string">
+		<% end %>
+	<li>Need temp housing: 
 		<% if post.need_housing? %>
 		Yes
 		<% else %>
 		No
-		<% end %></td>
-	<td class="column string"><%= post.note %></td>
-	
-	<td>	
+		<% end %>
+	<li>Luggage: <%= post.luggage_number %></li>
+	<li>Notes: <%= post.note %></li>
+	<li><% if current_user?(post.user) || current_user.admin? %>
+		<%= link_to "delete", post, method: :delete, confirm: "You sure?", title: post.user.name%>
+	<% end %></li>
+	<li>
+
 			<% if !post.status? && !current_user.newbie? && !current_user?(post.user) %>
   				<div id="pick_form">
     				<%= form_for(current_user.trips.build(pickedpost_id: post.id)) do |f| %>
@@ -45,30 +43,23 @@
 				Pickup by: <%= link_to Trip.find_by_pickedpost_id(post).volunteer.name, Trip.find_by_pickedpost_id(post).volunteer %>
 			<% elsif !post.status? && current_user.newbie? %>
 				Have not been picked by anyone.
-			<% end %>	
-	</td>
-	
- 
-  <td>
-  	<% if post.need_housing? %>
-		Temp housing: <%= post.temp_housing_arrangement %>
-  	<% else %>
-		No need
-  	<% end %>
-  </td>
+			<% end %>
 
-  <td>
+	</li>
+
+  </span>
+ 
+  <% if post.need_housing? %>
+	<li>Temp housing: <% post.temp_housing_arrangement %></li>
+  <% else %>
+	<li>No need</li>
+  <% end %>
+
   <% if current_user.admin? %>
   	<li><%= link_to "Update temp housing arrangement", edit_post_path(post) %></li>
   <% end %>
-  </td>
 
-  <td><% if current_user?(post.user) || current_user.admin? %>
-		<%= link_to "delete", post, method: :delete, confirm: "You sure?", title: 	 post.user.name%>
-	  <% end %></td>
-  <td>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
   </span>
-  </td>
-</tr>
+</li>
