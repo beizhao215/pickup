@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   
   before_filter :admin_user,   only: [:edit, :update]
   
+  before_filter :volunteer_user, only: :index
+  
 
  
 
@@ -32,7 +34,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(params[:post])
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to posts_path
+      redirect_to user_path(current_user)
     else
       render 'users/show'
     end
@@ -56,6 +58,10 @@ class PostsController < ApplicationController
     
     def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+    
+    def volunteer_user
+      redirect_to(user_path(current_user)) unless !current_user.newbie?
     end
 
 end

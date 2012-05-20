@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   
   validates :user_id, presence: true
   validates :note, length: { maximum: 140 }
-  validates :number_of_people, presence: true
+  validates_inclusion_of :number_of_people, :in => [1, 2]
   validates_numericality_of :number_of_people, :only_integer => true
   VALID_DATE_REGEX = /\d\d\d\d+\-\d\d+\-\d\d/
   validates :arrival_date, presence: true, format: { with: VALID_DATE_REGEX }
