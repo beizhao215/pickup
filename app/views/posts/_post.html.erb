@@ -27,7 +27,7 @@
 	<td class="column string"><%= post.note %></td>
 	
 	<td>	
-			<% if !post.status? && !current_user.newbie? && !current_user?(post.user) %>
+			<% if !post.status? && !current_user.newbie? && !current_user?(post.user) && post.need_pickup? %>
   				<div id="pick_form">
     				<%= form_for(current_user.trips.build(pickedpost_id: post.id)) do |f| %>
   						<div><%= f.hidden_field :pickedpost_id %></div>
@@ -45,6 +45,8 @@
 				Pickup by: <%= link_to Trip.find_by_pickedpost_id(post).volunteer.name, Trip.find_by_pickedpost_id(post).volunteer %>
 			<% elsif !post.status? && current_user.newbie? %>
 				Have not been picked by anyone.
+			<% elsif !post.need_pickup? %>
+				No need
 			<% end %>	
 	</td>
 	

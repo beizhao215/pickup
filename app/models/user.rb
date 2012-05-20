@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   validate :validate_password
   validates_inclusion_of :newbie, :in => [true, false]
   
+  
   def validate_password
     if new_record? 
       password.length >= 6

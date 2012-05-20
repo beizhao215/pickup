@@ -25,8 +25,8 @@ class Post < ActiveRecord::Base
   VALID_TIME_REGEX = /\d\d+:\d\d+:\d\d/
   validates :arrival_time, presence: true, format: { with: VALID_TIME_REGEX }
   validates :flight_number, presence: true
-  validates :need_pickup, presence: true
-  validates :need_housing, presence: true
+  validates_inclusion_of :need_pickup, :in => [true, false]
+  validates_inclusion_of :need_housing, :in => [true, false]
   
   default_scope order: 'posts.created_at DESC'
 end
