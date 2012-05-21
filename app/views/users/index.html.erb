@@ -17,53 +17,49 @@
 					<tr>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=id" style>Id</a>
+							<%= link_to 'Id', users_path(:sort => 'id') %>
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=name" style>Name</a>
+							Name
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=user.gender" style>Gender</a>
+							<%= link_to 'Gender', users_path(:sort => 'gender') %>
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=user.major" style>Major</a>
+							<%= link_to 'Major', users_path(:sort => 'major') %>
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=newbie" style>Role</a>
+							<%= link_to 'Role', users_path(:sort => 'newbie') %>
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=renren" style>Renren</a>
+							<%= link_to 'Provide temp housing', users_path(:sort => 'provide_housing') %>
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=provide_housing" style>Provide temp housing?</a>
+							To how many people?
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=housing_number" style>To how many people?</a>
-						</th>
-						<th>
-							<i class style="position:absolute"></i>
-							<a href="/users?order=available_pickup_time" style>Available pickup time</a>
+							Available pickup time
 						</th>
 						<% if current_user.admin? %>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=email" style>Email</a>
+							Email
 						</th>
 						
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=qq" style>QQ</a>
+							QQ
 						</th>
 						<th>
 							<i class style="position:absolute"></i>
-							<a href="/users?order=phone" style>Phone</a>
+							Phone
 						</th>
 						<% end%>
 						

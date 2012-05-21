@@ -11,6 +11,8 @@ FactoryGirl.define do
     end
   end
   
+  
+  
   factory :post do
     note "Lorem ipsum"
     number_of_people "1"

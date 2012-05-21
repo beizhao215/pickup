@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120519011141) do
+ActiveRecord::Schema.define(:version => 20120520161411) do
 
   create_table "posts", :force => true do |t|
     t.string   "note"
@@ -31,6 +31,10 @@ ActiveRecord::Schema.define(:version => 20120519011141) do
     t.string   "temp_housing_arrangement"
   end
 
+  add_index "posts", ["arrival_date", "arrival_time", "flight_number"], :name => "index_posts_on_arrival_date_and_arrival_time_and_flight_number"
+  add_index "posts", ["need_pickup", "entry_port"], :name => "index_posts_on_need_pickup_and_entry_port"
+  add_index "posts", ["status", "need_housing"], :name => "index_posts_on_status_and_need_housing"
+  add_index "posts", ["temp_housing_arrangement"], :name => "index_posts_on_temp_housing_arrangement"
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"
 
   create_table "trips", :force => true do |t|
@@ -64,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120519011141) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["gender", "newbie", "provide_housing", "major"], :name => "index_users_on_gender_and_newbie_and_provide_housing_and_major"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

@@ -24,8 +24,8 @@
       	<%= f.text_field :housing_number %>
 	  <% end %>
 
-	  <%= f.radio_button :gender, true %> <%= f.label :gender, "I'm a boy" %>
-	  <%= f.radio_button :gender, false%> <%= f.label :gender, "I'm a girl" %>
+	  <input id="user_gender_true" name="user[gender]" type="radio" value="true"> Male<br />
+	  <input id="user_gender_false" name="user[gender]" type="radio" value="false"> Female<br /><br />
 
  	  <%= f.label :qq, "QQ" %>
       <%= f.text_field :qq %>

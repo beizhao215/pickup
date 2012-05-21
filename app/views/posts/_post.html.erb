@@ -3,15 +3,15 @@
 	<td class="column foreignkey"><%= link_to post.user.name, post.user %></td>
 	<td class="column string">
 		<% if post.user.gender? %>
-				Boy
+			    Male
 			<% else %>
-				Girl
+				Female
 			<% end %></td>
 	<td class="column string"><%= post.user.major %></td>
-	<td class="column date"><%= post.arrival_date %></td> 
-	<td class="column time"><%= post.arrival_time.hour %>:<%= post.arrival_time.min %></td> 
-	<td class="column string"><%= post.flight_number %></td>
-	<td class="column fixnum"><%= post.number_of_people %></td>
+	<% if current_user.admin? %>
+	<td class="column string"><%= post.user.email %></td>
+	<td class="column string"><%= post.user.phone %></td>
+	<% end %>
 	<td class="column string">
 		<% if post.need_pickup? %>
 		Yes
@@ -24,6 +24,12 @@
 		<% else %>
 		No
 		<% end %></td>
+	<td class="column date"><%= post.arrival_date %></td> 
+	<td class="column time"><%= post.arrival_time.hour %>:<%= post.arrival_time.min %></td> 
+	<td class="column string"><%= post.entry_port %></td>
+	<td class="column string"><%= post.flight_number %></td>
+	<td class="column fixnum"><%= post.number_of_people %></td>
+	
 	<td class="column string"><%= post.note %></td>
 	
 	<td>	

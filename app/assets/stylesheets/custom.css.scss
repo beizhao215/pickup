@@ -56,6 +56,10 @@ h2 {
   font-weight: normal;
   color: $grayLight;
 }
+h4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
 p {
   font-size: 1.1em;
@@ -174,6 +178,15 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
  }
+
+/*input[type="radio"], label{
+     float:left;
+
+    }
+input{
+ clear:left;
+}*/
+​
 
 /* users index */
 

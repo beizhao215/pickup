@@ -17,9 +17,9 @@
 			<% end %>
 		<li>Gender: 
 			<% if @user.gender? %>
-				Boy
+				Male
 			<% else %>
-				Girl
+				Female
 			<% end %>
 		<li>Major: <%= @user.major %></li>
 	<% if @user==current_user || current_user.trips.map(&:pickedpost).map(&:user).include?(@user) || current_user.admin? || @user.trips.map(&:pickedpost).map(&:user).include?(current_user) %>
@@ -54,71 +54,86 @@
 		<% if @user.posts.count!=0 %>
       		<h3>Posts (<%= @user.posts.count %>)</h3>
       		<div class="row-fluid">
-        <div class="span16">
-            <table class="table-striped table-bordered table items-list">
-                <tread>
-                    <tr>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=id" style>Id</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=name" style>Name</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=user.gender" style>Gender</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=user.major" style>Major</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=arrival_date" style>Arrival date</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=arrival_time" style>Arrival time</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=flight_number" style>Flight number</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=number_of_prople" style>Number of people</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=need_pickup" style>Need airport pickup?</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=need_housing" style>Need temp housing?</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=note" style>Notes</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=status" style>Pickup status</a>
-                        </th>
-                        <th>
-                            <i class style="position:absolute"></i>
-                            <a href="/posts?order=temp_housing" style>Temp housing status</a>
-                        </th>
-                    </tr>
-                </tread>
-                <tbody class="autopagerize_page_element">
-                
-                    <%= render @posts %>
-                </tbody>
-            </table>
-        </div>
-    </div>
+		<div class="span16">
+			<table class="table-striped table-bordered table items-list">
+				<tread>
+					<tr>
+						<th>
+							<i class style="position:absolute"></i>
+							<%= link_to 'Id', posts_path(:sort => 'id') %>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Name
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Gender
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Major
+						</th>
+						<% if current_user.admin? %>
+						<th>
+							<i class style="position:absolute"></i>
+							Email
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Phone
+						</th>
+						<% end %>
+						<th>
+							<i class style="position:absolute"></i>
+							<%= link_to 'Need airport pickup?', posts_path(:sort => 'need_pickup')%>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<%= link_to 'Need temp housing?', posts_path(:sort => 'need_housing')%>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<%= link_to 'Arrival date', posts_path(:sort => 'arrival_date')%>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+						    Arrival time
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+						    Port of Entry
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+						    Flight number
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Number of people
+						</th>
+						
+						<th>
+							<i class style="position:absolute"></i>
+							Notes
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							<%= link_to 'Pickup status', posts_path(:sort => 'status')%>
+						</th>
+						<th>
+							<i class style="position:absolute"></i>
+							Temp housing arrangement
+						</th>
+					</tr>
+				</tread>
+				<tbody class="autopagerize_page_element">
+				
+  					<%= render @posts %>
+				</tbody>
+			</table>
+		</div>
+	</div>
       	
 		<% elsif @user.posts.count==0 && @user==current_user %>
 		<section>

@@ -3,9 +3,9 @@
   <td class="column fixnum"><%= link_to user.name, user %></td>
   <td class="column string">
 		<% if user.gender? %>
-				Boy
+				Male
 			<% else %>
-				Girl
+				Female
 			<% end %></td>
   <td class="column string"><%= user.major %></td>
   <td class="column string">
@@ -13,8 +13,7 @@
 				New student
 			<% else %>
 				Volunteer
-			<% end %></td>
-  <td class="column string"><%= user.renren %></td>		
+			<% end %></td>	
   <td class="column string">
 		<% if user.provide_housing? %>
 				Yes

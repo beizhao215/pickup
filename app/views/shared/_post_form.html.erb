@@ -16,19 +16,16 @@
 	<%= f.label :entry_port, "Port of entry" %>
 	<%= f.text_field :entry_port %>
 	
-	Do you need Airport pickup?
-	<%= f.radio_button :need_pickup, true %> <%= f.label :need_pickup, "Yes" %>
-	<%= f.radio_button :need_pickup, false%> <%= f.label :need_pickup, "No" %>
+    Do you need Airport pickup?<br /><br />
+	<input id="post_need_pickup_true" name="post[need_pickup]" type="radio" value="true"> Yes <br />
+	<input id="post_need_pickup_false" name="post[need_pickup]" type="radio" value="false"> No <br /><br />
 	
-	Do you need temp housing?
-	<%= f.radio_button :need_housing, true %> <%= f.label :need_housing, "Yes" %>
-  	<%= f.radio_button :need_housing, false%> <%= f.label :need_housing, "No" %>
-
-	<%= f.label :luggage_number %>
-    <%= f.text_field :luggage_number, placeholder: "How many luggage do you have?"  %>
+	Do you need temp housing?<br /><br />
+	<input id="post_need_housing_true" name="post[need_housing]" type="radio" value="true"> Yes <br />
+  	<input id="post_need_housing_false" name="post[need_housing]" type="radio" value="false"> No <br /><br />
 
     <%= f.label :note, "Notes" %>
-	<%= f.text_area :note, placeholder: "Additional notes to volunteer..." %>
+	<%= f.text_area :note, placeholder: "Additional notes..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

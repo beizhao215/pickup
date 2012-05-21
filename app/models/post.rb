@@ -28,5 +28,5 @@ class Post < ActiveRecord::Base
   validates_inclusion_of :need_pickup, :in => [true, false]
   validates_inclusion_of :need_housing, :in => [true, false]
   
-  default_scope order: 'posts.created_at DESC'
+  #default_scope order: 'posts.id'
 end

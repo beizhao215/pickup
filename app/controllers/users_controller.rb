@@ -42,6 +42,19 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    sort = params[:sort]
+    case sort
+      when 'id'
+        @users=User.find(:all, :order => "id")
+      when 'gender'
+        @users=User.find(:all, :order => "gender DESC")
+      when 'major'
+        @users=User.find(:all, :order => "major")
+      when 'newbie'
+        @users=User.find(:all, :order => "newbie")
+      when 'provide_housing'
+        @users=User.find(:all, :order => "provide_housing")
+      end
   end
   
   def destroy

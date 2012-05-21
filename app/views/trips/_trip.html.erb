@@ -1,9 +1,9 @@
 <li>Name: <%= link_to trip.pickedpost.user.name, trip.pickedpost.user %></li>
 <li>Gender:
 		<% if trip.pickedpost.user.gender? %>
-				Boy
+				Male
 			<% else %>
-				Girl
+				Female
 			<% end %></li>
 <li>Major:<%= trip.pickedpost.user.major %></li>
 <li>Arrival date: <%= trip.pickedpost.arrival_date %></li>

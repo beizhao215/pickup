@@ -5,6 +5,8 @@ describe "Post pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
+  
+  before { user.newbie=true }
   before { sign_in user }
 
   describe "post creation" do
@@ -28,7 +30,7 @@ describe "Post pages" do
                fill_in 'post_arrival_time', with: "21:08"
                fill_in 'post_flight_number', with: "AA2021"
                fill_in 'post_number_of_people', with: "1"
-               fill_in 'post_luggage_number', with: "two 158"
+               #fill_in 'post_luggage_number', with: "two 158"
                #fill_in 'post_destination', with: "utd"
                fill_in 'post_note', with: "Lorem ipsum" 
                choose("post_need_pickup_true")

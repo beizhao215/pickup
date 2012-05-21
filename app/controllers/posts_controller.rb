@@ -11,8 +11,20 @@ class PostsController < ApplicationController
  
 
   def index
-   
-    @posts = Post.all
+    @posts=Post.find(:all, :order => "id")
+    sort = params[:sort]
+    case sort
+      when 'id'
+        @posts=Post.find(:all, :order => "id")
+      when 'arrival_date'
+        @posts=Post.find(:all, :order => "arrival_date")
+      when 'need_pickup'
+        @posts=Post.find(:all, :order => "need_pickup DESC")
+      when 'need_housing'
+        @posts=Post.find(:all, :order => "need_housing DESC")
+      when 'status'
+        @posts=Post.find(:all, :order => "status")
+      end
   end
   
   def edit
