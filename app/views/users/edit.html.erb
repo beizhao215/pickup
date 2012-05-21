@@ -17,8 +17,8 @@
       <%= f.text_field :major %>
 
 	  <% if !@user.newbie? %>
-	  	<%= f.radio_button :provide_housing, true %> <%= f.label :provide_housing, "I can provide temp housing" %>
-	  	<%= f.radio_button :provide_housing, false%> <%= f.label :provide_housing, "I CANNOT provide temp housing" %>
+	  	<input id="user_provide_housing_true" name="user[provide_housing]" type="radio" value="true"> I can provide temp housing <br />
+	  	<input checked="checked" id="user_provide_housing_false" name="user[provide_housing]" type="radio" value="false">I CANNOT provide temp housing <br /><br/>
 	
 	  	<%= f.label :housing_number, "If yes, you can provide temp housing for how many people?" %>
       	<%= f.text_field :housing_number %>
