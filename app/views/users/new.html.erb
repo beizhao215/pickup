@@ -6,8 +6,10 @@
     <%= form_for(@user) do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
 	
-	  <%= f.radio_button :newbie, true %> <%= f.label :newbie, "I'm a new student need pick up" %>
-	  <%= f.radio_button :newbie, false%> <%= f.label :newbie, "I'm a volunteer willing to provide pick up" %>
+	 
+	
+	  <input id="user_newbie_true" name="user[newbie]" type="radio" value="true"> I'm a new student need pick up<br /><br />
+	  <input id="user_newbie_false" name="user[newbie]" type="radio" value="false"> I'm a volunteer willing to provide pick up<br /><br />
 
       <%= f.label :name %>
       <%= f.text_field :name %>
