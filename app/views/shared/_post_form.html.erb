@@ -1,19 +1,19 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-	<%= f.label :arrival_date, "Arrival date (YYYY-MM-DD)" %>
+	<%= f.label :arrival_date, "Arrival date (YYYY-MM-DD) *" %>
     <%= f.text_field :arrival_date %>
 
-	<%= f.label :arrival_time, "Arrival time (hh:mm:ss)" %>
+	<%= f.label :arrival_time, "Arrival time (hh:mm:ss) *" %>
     <%= f.text_field :arrival_time %>
 
-	<%= f.label :flight_number %>
+	<%= f.label :flight_number, "flight number *" %>
     <%= f.text_field :flight_number %>
 
-	<%= f.label :number_of_people, "Number of people (max number 2 for one post)" %>
+	<%= f.label :number_of_people, "Number of people (max number 2 for one post) *" %>
 	<%= f.text_field :number_of_people %>
 	
-	<%= f.label :entry_port, "Port of entry" %>
+	<%= f.label :entry_port, "Port of entry *" %>
 	<%= f.text_field :entry_port %>
 	
     Do you need Airport pickup?<br /><br />

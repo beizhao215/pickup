@@ -7,13 +7,13 @@
   <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
+      <%= f.label :name, "name *" %>
       <%= f.text_field :name %>
 
-      <%= f.label :email %>
+      <%= f.label :email, "email *" %>
       <%= f.text_field :email %>
 
- 	  <%= f.label :major %>
+ 	  <%= f.label :major, "major *" %>
       <%= f.text_field :major %>
 
 	  <% if !@user.newbie? %>
@@ -26,12 +26,14 @@
 
 	  <input id="user_gender_true" name="user[gender]" type="radio" value="true"> Male<br />
 	  <input id="user_gender_false" name="user[gender]" type="radio" value="false"> Female<br /><br />
+	
+	  <%= f.label :phone, "Phone# *" %>
+      <%= f.text_field :phone %>
 
  	  <%= f.label :qq, "QQ" %>
       <%= f.text_field :qq %>
 
- 	  <%= f.label :phone, "Phone#" %>
-      <%= f.text_field :phone %>
+
 
  	  <%= f.label :renren, "Renren(xiaonei)" %>
       <%= f.text_field :renren %>
